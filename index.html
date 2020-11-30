@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Escolar v4</title>
+    <link rel="stylesheet" href="node_modules/bulma/css/">
+    <script src="node_modules\axios\dist\axios.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="columns is-centered is-2">
+
+            <div class="column is-half">
+
+                <div class="notification is-link">
+                    <h1>Sistema Escolar</h1>
+                </div>
+
+                <form action="api/index.php/login" method="POST">
+                    <div class="field">
+                        <label class="label" for="usuario">Usuario</label>
+                        <input class="input" type="text" id="usuario" name="usuario">
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="password"> Password</label>
+                        <input class="input" type="password" id="password" name="password">
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <input class="button" type="button" value="Enviar" onclick="login()">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+    function login(){
+        axios.post('api/index.php/login/${document.forms[0],usuario.value}', {
+            usuario: document.forms[0].usuario.value,
+            password: document.forms[0].password.value,
+    })
+    .then(resp => {
+        if (resp.data.aceptado){
+            alert('bienvenido: ${resp.data.nombreperfil')
+            setTimeout('location.href=inicio.php?idusuario=${resp.dta.idusuario}',500)
+
+        } else{
+            alert('El usuario o contraseña es incorrecto/a')
+        }
+        console.log(response.data);
+    })
+    .catch(error=>{
+        console.log(error);
+    });
+    }
+</script>
+</body>
+</html>
